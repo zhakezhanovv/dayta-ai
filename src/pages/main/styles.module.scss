@@ -1,0 +1,22 @@
+.score {
+	&__section {
+		padding: 100px 0;
+	}
+
+	&__table {
+	}
+
+	&__head > th {
+		font-size: 1rem;
+		font-family: 'Roboto Mono', monospace;
+		font-weight: 700;
+		color: rgb(32, 32, 32);
+	}
+
+	&__body > td {
+		font-size: 0.875rem;
+		font-family: 'Roboto Mono', monospace;
+		font-weight: 300;
+		color: rgb(44, 44, 44);
+	}
+}
