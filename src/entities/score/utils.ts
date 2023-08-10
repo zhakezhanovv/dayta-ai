@@ -15,16 +15,20 @@ export function getScores(args: { users: UserModel[]; scores: ScoreModel[] }): S
 export function sortScores(args: { scores: Score[]; courseOrder: string[] }): Score[] {
 	const { scores, courseOrder } = args
 
-	return [...scores].sort((a, b) => {
-		const compareResult = a.name.localeCompare(b.name)
-		if (compareResult !== 0) return compareResult
+	return [...scores].sort((a, b) => compareScores({ a, b, courseOrder }))
+}
 
-		const aCourseIndex = courseOrder.findIndex((course) => a.course === course)
-		const bCourseIndex = courseOrder.findIndex((course) => b.course === course)
-		if (aCourseIndex > bCourseIndex) return 1
-		if (aCourseIndex < bCourseIndex) return -1
-		return 0
-	})
+export function compareScores(args: { a: Score; b: Score; courseOrder: string[] }) {
+	const { a, b, courseOrder } = args
+
+	const compareResult = a.name.localeCompare(b.name)
+	if (compareResult !== 0) return compareResult
+
+	const aCourseIndex = courseOrder.findIndex((course) => a.course === course)
+	const bCourseIndex = courseOrder.findIndex((course) => b.course === course)
+	if (aCourseIndex > bCourseIndex) return 1
+	if (aCourseIndex < bCourseIndex) return -1
+	return 0
 }
 
 /**
