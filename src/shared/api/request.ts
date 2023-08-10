@@ -1,10 +1,8 @@
-// export interface Response {
-// 	status
-// }
+/* 
+The use of libraries is not allowed, therefore I crated my own small library for http requests. 
+It uses 'httpRequest' build in function.
+*/
 
-export interface Create {
-	baseUrl: string
-}
 export interface HttpCreateArgs {
 	baseUrl: string
 }
